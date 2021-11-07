@@ -33,7 +33,7 @@ public class Roles extends JFrame{
     public void cargarUsuarios(){
         
       Logica fun = new Logica();
-      fun.conectar("system","root");
+      fun.conectar("sys","ZXCvbn1218");
       //db.conectar(usuario, contrasena);
       resultado=fun.usuarios();
       
@@ -57,7 +57,7 @@ public class Roles extends JFrame{
     public void cargarUsuario1(){
         
       Logica fun = new Logica();
-      fun.conectar("system","root");
+      fun.conectar("sys","ZXCvbn1218");
       resultado=fun.usuarios();
       
         if(resultado!=null){
@@ -80,7 +80,7 @@ public class Roles extends JFrame{
     public void cargarRoles(){
         
       Logica fun = new Logica();
-      fun.conectar("system","root");
+      fun.conectar("sys","ZXCvbn1218");
       resultado=fun.cargarRoles(ComboUsuario1.getSelectedItem().toString());
       
         if(resultado!=null){

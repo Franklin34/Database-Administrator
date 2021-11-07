@@ -82,6 +82,11 @@ public class Sistema extends JFrame{
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Información de la instancia", "Nombre de la base de datos", "Parámetros de la base de datos", "Productos Oracle instalados y versiones", "IP del servidor de la base de datos", "Ubicación y nombre del fichero SPFILE", "Ubicación y nombre de los ficheros de control", "Ficheros temporales", "Ficheros de Redo Log", "Ficheros de Archive Log", "Espacio de los Tablespaces", "Tamaño ocupado por la base de datos", "Tamaño de ficheros de la base de datos", "Ocupación de todos los objetos" }));
 
         jButton1.setText("Ejecutar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         param_textarea.setColumns(20);
         param_textarea.setRows(5);
@@ -130,6 +135,11 @@ public class Sistema extends JFrame{
         jLabel5.setText("Activar auditoría");
 
         jButton2.setText("Activar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -319,6 +329,14 @@ public class Sistema extends JFrame{
 //        is.cargarUsuarios();
 //        is.setVisible(true);
     }//GEN-LAST:event_SalirActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     //METODOS GENERALES

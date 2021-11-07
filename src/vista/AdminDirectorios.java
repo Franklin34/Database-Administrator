@@ -275,7 +275,7 @@ public class AdminDirectorios extends JFrame{
     public void cargarUsuarios(){
         
       Logica fun = new Logica();
-      fun.conectar("system","root");
+      fun.conectar("sys","ZXCvbn1218");
       resultado=fun.usuarios();
       
         if(resultado!=null){
