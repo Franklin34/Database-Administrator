@@ -28,12 +28,34 @@ public class Roles extends JFrame{
     public Logica db;
     ResultSet resultado;
     
-    
+    public Roles(){
+        
+        initComponents();
+        
+        try{
+            for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
+                if("Nimbus".equals(info.getName())){
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            } 
+        }catch(ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Roles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+        this.setLocationRelativeTo(null); //Centa la pantalla
+        this.setTitle("Roles de Usuarios"); //Título
+        this.setResizable(false);
+        cargarUsuarios();
+        cargarUsuario1();
+    }
     
     public void cargarUsuarios(){
         
       Logica fun = new Logica();
-      fun.conectar("system","root");
+
+      fun.conectar("sys","root123");
+
       //db.conectar(usuario, contrasena);
       resultado=fun.usuarios();
       
@@ -57,7 +79,9 @@ public class Roles extends JFrame{
     public void cargarUsuario1(){
         
       Logica fun = new Logica();
-      fun.conectar("system","root");
+
+      fun.conectar("sys","root123");
+
       resultado=fun.usuarios();
       
         if(resultado!=null){
@@ -80,7 +104,9 @@ public class Roles extends JFrame{
     public void cargarRoles(){
         
       Logica fun = new Logica();
-      fun.conectar("system","root");
+
+      fun.conectar("sys","root123");
+
       resultado=fun.cargarRoles(ComboUsuario1.getSelectedItem().toString());
       
         if(resultado!=null){
@@ -120,27 +146,7 @@ public class Roles extends JFrame{
         }
     }
     */
-    public Roles(){
-        
-        initComponents();
-        
-        try{
-            for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
-                if("Nimbus".equals(info.getName())){
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            } 
-        }catch(ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Roles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        
-        this.setLocationRelativeTo(null); //Centa la pantalla
-        this.setTitle("Roles de Usuarios"); //Título
-        this.setResizable(false);
-    }
-
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -166,7 +172,11 @@ public class Roles extends JFrame{
         ComboUsuario1 = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        param_header4 = new javax.swing.JLabel();
+        crearRol3 = new javax.swing.JLabel();
+        txtNombreUsuario = new javax.swing.JTextField();
+        btnCrearUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -189,8 +199,8 @@ public class Roles extends JFrame{
         panel.add(crearRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 160, -1));
 
         param_header.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        param_header.setText("Crear rol");
-        panel.add(param_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        param_header.setText("Crear Usuario");
+        panel.add(param_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
 
         comboUsuarios.setBackground(java.awt.Color.darkGray);
         comboUsuarios.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -201,7 +211,7 @@ public class Roles extends JFrame{
                 comboUsuariosActionPerformed(evt);
             }
         });
-        panel.add(comboUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 220, 20));
+        panel.add(comboUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 220, 20));
 
         btnCrearRol.setBackground(new java.awt.Color(153, 255, 153));
         btnCrearRol.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -212,7 +222,7 @@ public class Roles extends JFrame{
                 btnCrearRolActionPerformed(evt);
             }
         });
-        panel.add(btnCrearRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 100, 30));
+        panel.add(btnCrearRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 100, 30));
 
         txtNombreRol1.setBorder(null);
         txtNombreRol1.addActionListener(new java.awt.event.ActionListener() {
@@ -220,11 +230,11 @@ public class Roles extends JFrame{
                 txtNombreRol1ActionPerformed(evt);
             }
         });
-        panel.add(txtNombreRol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 180, 20));
+        panel.add(txtNombreRol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 180, 20));
 
         crearRol4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         crearRol4.setText("Seleccione el usuario:");
-        panel.add(crearRol4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 130, -1));
+        panel.add(crearRol4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 130, -1));
 
         comboRoles.setBackground(java.awt.Color.darkGray);
         comboRoles.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -242,8 +252,8 @@ public class Roles extends JFrame{
         panel.add(param_header1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         crearRol1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        crearRol1.setText("Indique el rol que desea crear:");
-        panel.add(crearRol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        crearRol1.setText("Indique el usuario que desea crear:");
+        panel.add(crearRol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, -1, -1));
 
         txtNombreRol.setBorder(null);
         txtNombreRol.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +261,7 @@ public class Roles extends JFrame{
                 txtNombreRolActionPerformed(evt);
             }
         });
-        panel.add(txtNombreRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 180, 20));
+        panel.add(txtNombreRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 150, 20));
 
         btnRemoverRol.setBackground(new java.awt.Color(255, 102, 102));
         btnRemoverRol.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -263,7 +273,7 @@ public class Roles extends JFrame{
                 btnRemoverRolActionPerformed(evt);
             }
         });
-        panel.add(btnRemoverRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 100, 30));
+        panel.add(btnRemoverRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 100, 30));
 
         btnAsignarRol.setBackground(new java.awt.Color(153, 255, 153));
         btnAsignarRol.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -274,19 +284,19 @@ public class Roles extends JFrame{
                 btnAsignarRolActionPerformed(evt);
             }
         });
-        panel.add(btnAsignarRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 100, 30));
+        panel.add(btnAsignarRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, 30));
 
         param_header2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         param_header2.setText("Consultar roles de usuario");
-        panel.add(param_header2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+        panel.add(param_header2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         param_header3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         param_header3.setText("Asignar o remover rol a un usuario");
-        panel.add(param_header3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        panel.add(param_header3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         crearRol2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         crearRol2.setText("Indique el rol:");
-        panel.add(crearRol2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 80, -1));
+        panel.add(crearRol2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 80, -1));
 
         btnConsultar.setBackground(java.awt.Color.darkGray);
         btnConsultar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -310,9 +320,29 @@ public class Roles extends JFrame{
             }
         });
         panel.add(ComboUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 190, 20));
-        panel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 700, 10));
-        panel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 700, 10));
-        panel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 700, 10));
+        panel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 700, 10));
+        panel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 700, 10));
+        panel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 700, 10));
+
+        param_header4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        param_header4.setText("Crear rol");
+        panel.add(param_header4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        crearRol3.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        crearRol3.setText("Indique el rol que desea crear:");
+        panel.add(crearRol3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        panel.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 140, 30));
+
+        btnCrearUsuario.setBackground(new java.awt.Color(153, 255, 153));
+        btnCrearUsuario.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnCrearUsuario.setText("Crear Usuario");
+        btnCrearUsuario.setBorder(null);
+        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearUsuarioActionPerformed(evt);
+            }
+        });
+        panel.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -345,7 +375,7 @@ public class Roles extends JFrame{
             JOptionPane.showMessageDialog(null,"Debe seleccionar un directorio para borrar","", JOptionPane.ERROR_MESSAGE);
         }*/
         if(db.crearRol(txtNombreRol.getText())){
-            db.crearRol(txtNombreRol.getText());
+            //db.crearRol(txtNombreRol.getText());
             JOptionPane.showMessageDialog(null, "El rol fue creado con exito","",JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "Hubo un error, intente de nuevo","",JOptionPane.INFORMATION_MESSAGE);
@@ -370,7 +400,7 @@ public class Roles extends JFrame{
 
     private void btnRemoverRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverRolActionPerformed
         if(db.revocarRolUsuario(txtNombreRol1.getText(), comboUsuarios.getSelectedItem().toString())){
-            db.revocarRolUsuario(txtNombreRol1.getText(), comboUsuarios.getSelectedItem().toString());
+            //db.revocarRolUsuario(txtNombreRol1.getText(), comboUsuarios.getSelectedItem().toString());
             JOptionPane.showMessageDialog(null, "El rol fue removido con exito","",JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "Hubo un error, intente de nuevo","",JOptionPane.WARNING_MESSAGE);
@@ -379,7 +409,7 @@ public class Roles extends JFrame{
 
     private void btnAsignarRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarRolActionPerformed
         if(db.otorgarRolUsuario(txtNombreRol1.getText(), comboUsuarios.getSelectedItem().toString())){
-            db.otorgarRolUsuario(txtNombreRol1.getText(), comboUsuarios.getSelectedItem().toString());
+            //db.otorgarRolUsuario(txtNombreRol1.getText(), comboUsuarios.getSelectedItem().toString());
             JOptionPane.showMessageDialog(null, "El rol fue asignado con exito","",JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "Hubo un error, intente de nuevo","",JOptionPane.WARNING_MESSAGE);
@@ -394,6 +424,15 @@ public class Roles extends JFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboUsuario1ActionPerformed
 
+    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
+        if(db.crearUsuario(txtNombreUsuario.getText())){
+            //db.revocarRolUsuario(txtNombreRol1.getText(), comboUsuarios.getSelectedItem().toString());
+            JOptionPane.showMessageDialog(null, "El usuario fue creado con exito","",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Hubo un error, intente de nuevo","",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -401,24 +440,28 @@ public class Roles extends JFrame{
     private javax.swing.JButton btnAsignarRol;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnCrearRol;
+    private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnRemoverRol;
     private javax.swing.JComboBox<String> comboRoles;
     private javax.swing.JComboBox<String> comboUsuarios;
     private javax.swing.JLabel crearRol;
     private javax.swing.JLabel crearRol1;
     private javax.swing.JLabel crearRol2;
+    private javax.swing.JLabel crearRol3;
     private javax.swing.JLabel crearRol4;
     private javax.swing.JButton jButton2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel param_header;
     private javax.swing.JLabel param_header1;
     private javax.swing.JLabel param_header2;
     private javax.swing.JLabel param_header3;
+    private javax.swing.JLabel param_header4;
     private javax.swing.JTextField txtNombreRol;
     private javax.swing.JTextField txtNombreRol1;
+    private javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 
 

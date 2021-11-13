@@ -186,6 +186,9 @@ public class Parametros extends javax.swing.JFrame{
             
             
         //Nombre de la base de datos    
+            
+            
+        //Nombre de la base de datos    
         }else if(cbParametro.getSelectedItem().toString().equals("Nombre de la base de datos")){
             
             areaComando.setText("");
@@ -216,6 +219,9 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+        //Parámetros de la base de datos  
             
             
         //Parámetros de la base de datos  
@@ -252,6 +258,9 @@ public class Parametros extends javax.swing.JFrame{
            
             
         //Productos Oracle instalados y versiones
+           
+            
+        //Productos Oracle instalados y versiones
         }else if(cbParametro.getSelectedItem().toString().equals("Productos Oracle instalados y versiones")){
             
             areaComando.setText("");
@@ -282,6 +291,9 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+        
+        //IP del servidor de la base de datos
             
         
         //IP del servidor de la base de datos
@@ -318,6 +330,9 @@ public class Parametros extends javax.swing.JFrame{
             
         
         //Ubicación y nombre del fichero SPFILE
+            
+        
+        //Ubicación y nombre del fichero SPFILE
         }else if(cbParametro.getSelectedItem().toString().equals("Ubicación y nombre del fichero SPFILE")){
         
             areaComando.setText("");
@@ -348,6 +363,9 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
+        
+            
+        //Ubicación y nombre de los ficheros de control
         
             
         //Ubicación y nombre de los ficheros de control
@@ -384,6 +402,9 @@ public class Parametros extends javax.swing.JFrame{
             
             
         //Todos los ficheros de datos y su ubicación
+            
+            
+        //Todos los ficheros de datos y su ubicación
         }else if(cbParametro.getSelectedItem().toString().equals("Todos los ficheros de datos y su ubicación")){
         
             areaComando.setText("");
@@ -417,6 +438,9 @@ public class Parametros extends javax.swing.JFrame{
         
             
         //Ficheros temporales  
+        
+            
+        //Ficheros temporales  
         }else if(cbParametro.getSelectedItem().toString().equals("Ficheros temporales")){
             
             areaComando.setText("");
@@ -447,6 +471,9 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+        //Ficheros de RedoLog
             
             
         //Ficheros de RedoLog
@@ -484,6 +511,10 @@ public class Parametros extends javax.swing.JFrame{
             
             
         //Espacio de los Tablespaces    
+            
+            
+            
+        //Espacio de los Tablespaces    
         }else if(cbParametro.getSelectedItem().toString().equals("Espacio de los Tablespaces")){
             
             areaComando.setText("");
@@ -514,6 +545,9 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+        
+        //Tamaño ocupado por la base de datos    
             
         
         //Tamaño ocupado por la base de datos    
@@ -550,6 +584,9 @@ public class Parametros extends javax.swing.JFrame{
             
          
         //Tamaño de ficheros de la base de datos    
+            
+         
+        //Tamaño de ficheros de la base de datos    
         }else if(cbParametro.getSelectedItem().toString().equals("Tamaño de ficheros de la base de datos")){
         
             areaComando.setText("");
@@ -580,6 +617,9 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
+        
+        
+        //Ocupación de todos los objetos
         
         
         //Ocupación de todos los objetos
@@ -616,6 +656,9 @@ public class Parametros extends javax.swing.JFrame{
             
             
         //Propietarios de objetos y número de objetos    
+            
+            
+        //Propietarios de objetos y número de objetos    
         }else if(cbParametro.getSelectedItem().toString().equals("Propietarios de objetos y número de objetos")){
             
             areaComando.setText("");
@@ -646,6 +689,9 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+        //Información Tablespaces    
             
             
         //Información Tablespaces    

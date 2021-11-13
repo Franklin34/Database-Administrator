@@ -293,6 +293,7 @@ public class CrearRespaldo extends JFrame{
         boxTablas.enable(true);
         radioSchema.setSelected(false);
         radioFull.setSelected(false);
+        cargarTablasUsuario();
     }//GEN-LAST:event_radioTablasActionPerformed
 
     
@@ -337,7 +338,7 @@ public class CrearRespaldo extends JFrame{
         }catch(SQLException ex){
             Logger.getLogger(CrearRespaldo.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }    
     
     //Metodo para hacer la exportacion
     private void Exportar(){
