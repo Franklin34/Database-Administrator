@@ -82,42 +82,6 @@ public class Logica {
 
     }
 
-//    //Crea Rol de usuario Original
-//    public boolean crearRol(String rol){
-//        
-//        try{
-//
-//            String query = "CREATE ROLE " + rol;
-//            Statement stmt = conexion.createStatement();
-//
-//            stmt.execute(query);
-//            stmt.close();
-//            conexion.commit();
-//            return true;
-//            
-//        }catch(SQLException ex){
-//            System.out.println(ex.toString());
-//            return false;
-//        }
-//  
-//    }
-//    //Retorna todos los roles de usuario Original
-//    public ResultSet cargarRoles(String usuario){
-//
-//        String query = "SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE='"+usuario+"'";
-//        
-//        try{
-//            Statement stmt = null;
-//            stmt = conexion.createStatement();;
-//            ResultSet resultado = stmt.executeQuery(query);
-//            return resultado;
-//
-//        }catch(SQLException ex){
-//            System.out.println(ex.toString());
-//            return null;
-//        }
-//
-//    }
     //Retorna el total de los privilegios en el sistema
     public ResultSet cargarTotalPrivilegios() {
 
@@ -192,43 +156,7 @@ public class Logica {
         }
     }
 
-//    //Otorga un rol a un usuario Original
-//    public boolean otorgarRolUsuario(String rol, String user){
-//
-//        try{
-//
-//            String query = "GRANT " + rol + " TO "+  user;
-//            Statement stmt = conexion.createStatement();
-//
-//            stmt.execute(query);
-//            stmt.close();
-//            conexion.commit();
-//            return true;
-//
-//        }catch(SQLException ex){
-//            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
-//            return false;
-//        }
-//    }
-//    //Revoca rol a un usuario Original
-//    public boolean revocarRolUsuario(String rol, String user){
-//
-//        try{
-//
-//            String query = "REVOKE " + rol + " FROM "+  user;
-//            Statement stmt = conexion.createStatement();
-//
-//            stmt.execute(query);
-//            stmt.close();
-//            conexion.commit();
-//            return true;
-//            
-//        }catch(SQLException ex){
-//            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
-//            return false;
-//        }
-//    }
-    //Carga sesiones EDWIN
+    //Carga sesiones 
     public ResultSet cargarSesionesBD() {
 
         //conectar("system", "root");
@@ -248,7 +176,7 @@ public class Logica {
         }
     }
 
-    //Cierra sesion EDWIN
+    //Cierra sesion 
     public boolean cerrarSesionBD(String sid, String serial, int band) {
 
         String query;
@@ -274,7 +202,7 @@ public class Logica {
         }
     }
 
-    //Carga directorios EDWIN
+    //Carga directorios 
     public ResultSet cargarDirectorios() {
 
         String query = "SELECT NAME, PATH FROM datapump_dir_objs";
@@ -292,7 +220,7 @@ public class Logica {
         }
     }
 
-    //Carga tablas usuario JORGE
+    //Carga tablas usuario 
     public ResultSet cargarTablasUsuario(String usuario) {
 
         String query = "SELECT table_name FROM all_tables where owner = '" + usuario + "'";
@@ -309,7 +237,7 @@ public class Logica {
         }
     }
 
-    //Crea directorio JORGE
+    //Crea directorio 
     public boolean crearDirectorio(String nombreDir, String pathDir, String user) {
 
         try {
@@ -360,50 +288,6 @@ public class Logica {
         }
     }
 
-//   
-//    //Tunning Original
-//    private boolean executarQueryOptimizar(String query){
-//       
-//        try{
-//            
-//            Statement stmt = conexion.createStatement();
-//
-//            query = "EXPLAIN PLAN FOR " + query;
-//
-//            stmt.execute(query);
-//            stmt.close();
-//            conexion.commit();
-//            return true;
-//            
-//        }catch(SQLException ex){
-//            cadenaError = ex.getMessage();
-//            return false;
-//        }
-//    }
-//    //Explain Plan Original
-//    public ResultSet obtenerExplainPlan(String query){
-//           
-//        //Si se ejecuta correctamente
-//        if(executarQueryOptimizar(query)){
-//            
-//           query = "SELECT OPERATION,OBJECT_NAME,OPTIONS,COST,ACCESS_PREDICATES,FILTER_PREDICATES FROM plan_table";
-//           
-//            try{
-//                
-//                Statement stmt = null;
-//                stmt = conexion.createStatement();;
-//                ResultSet resultado = stmt.executeQuery(query);
-//                return resultado;
-//                
-//            }catch(SQLException ex){
-//                System.out.println(ex.toString());
-//                return null;
-//            }
-//            
-//        }else return null;       
-//    }
-//       
-    //JORGE
     public ResultSet cargarColumnasUser(String usuario, String tabla) {
 
         String query = "select COLUMN_NAME from ALL_TAB_COLUMNS where owner = '" + usuario + "' AND TABLE_NAME = '" + tabla + "'";
@@ -422,7 +306,6 @@ public class Logica {
 
     }
 
-    //EDWIN
     public ResultSet cargarPkFkKeyTabla(String tabla) {
 
         String query = "SELECT cols.column_name, cons.constraint_name,cons.constraint_type\n"
@@ -594,25 +477,6 @@ public class Logica {
 
         this.conectar("sys", "root123");
         String query;
-// if(tabla.equals("Schema"))
-// {
-// query="EXEC dbms_stats.gather_schema_stats('"+usuario+"',cascade => true);";
-// }
-// else
-// {
-// query="ANALYZE TABLE "+usuario+"."+tabla+" COMPUTE STATISTICS";
-// }
-// try
-// {
-// Statement stmt=null;
-// stmt=conexion.createStatement();
-// stmt.executeQuery(query);
-// JOptionPane.showMessageDialog(null, "¡La Estadistica se realizo exitosamente!");
-// }
-// catch(SQLException ex)
-// {
-// Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
-// }
         if (tabla.equals("Schema")) {
 
             ResultSet resultado = this.cargarTablasUsuario(usuario);
@@ -649,7 +513,7 @@ public class Logica {
             }
         }
     }
-    //Estadisticas EDWIN
+    //Estadisticas 
 
     public ResultSet ConsultaStats(String usuario, String tabla) {
 
@@ -849,24 +713,7 @@ public class Logica {
         }
     }
 
-    //Ficheros de Archive Log
-//    public ResultSet archiveLogfiles(){
-//
-//        String query = "show parameters archive_dest";
-//        
-//        try{
-//            Statement stmt = null;
-//            stmt = conexion.createStatement();;
-//            ResultSet resultado = stmt.executeQuery(query);
-//
-//            return resultado;
-//        }catch(SQLException ex){
-//            System.out.println(ex.toString());
-//            return null;
-//        }
-//    }
-//    
-    //Espacio de los Tablespaces EDWIN
+    //Espacio de los Tablespaces 
     public ResultSet tamTablespaces() {
 
         String query = "SELECT t.tablespace_name \"Tablespace\",\n"
@@ -986,7 +833,7 @@ public class Logica {
         }
     }
 
-    //Borrar Explain Plan STEFANNY
+    //Borrar Explain Plan 
     public boolean BorrarTablaPlanes() {
         try {
 
@@ -1001,7 +848,7 @@ public class Logica {
         }
     }
 
-    //Tunning STEFANNY
+    //Tunning 
     public String executarQueryOptimizar(String query) {
 
         try {
@@ -1020,10 +867,8 @@ public class Logica {
         }
     }
 
-    //Explain Plan STEFANNY
+    //Explain Plan 
     public ResultSet obtenerExplainPlan() {
-        //String query = "SELECT OPERATION,OBJECT_NAME,OPTIONS,COST,ACCESS_PREDICATES,FILTER_PREDICATES FROM plan_table";
-        //String query = "SELECT OPERATION AS OPERACION, OBJECT_NAME AS OBJETO, OPTIONS as FECHA FROM plan_table";
         String query = "SELECT SUBSTR (LPAD(' ', LEVEL-1) || OPERATION || ' (' || OPTIONS|| ')',1,30 ) OPERACION, OBJECT_NAME OBJETO, TIMESTAMP FECHA"
                 + " FROM PLAN_TABLE START WITH ID = 0 CONNECT BY PRIOR ID=PARENT_ID";
 
@@ -1040,7 +885,7 @@ public class Logica {
         }
     }
 
-    //Crea Rol de usuario KATHERINE
+    //Crea Rol de usuario 
     public boolean crearRol(String rol) {
 
         try {
@@ -1063,7 +908,7 @@ public class Logica {
 
     }
 
-    //Crea usuario KATHERINE
+    //Crea usuario 
     public boolean crearUsuario(String usuario) {
         try {
             String query1 = "alter session set \"_ORACLE_SCRIPT\" =true";
@@ -1084,7 +929,7 @@ public class Logica {
         }
     }
 
-    //Retorna todos los roles de usuario KATHERINE
+    //Retorna todos los roles de usuario
     public ResultSet cargarRoles(String usuario) {
 
         String query = "SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE='" + usuario + "'";
@@ -1101,7 +946,7 @@ public class Logica {
         }
     }
 
-    //Revoca rol a un usuario KATHERINE
+    //Revoca rol a un usuario
     public boolean revocarRolUsuario(String rol, String user) {
 
         try {
@@ -1120,7 +965,7 @@ public class Logica {
         }
     }
 
-    //Otorga un rol a un usuario KATHERINE
+    //Otorga un rol a un usuario 
     public boolean otorgarRolUsuario(String rol, String user) {
 
         try {
@@ -1140,9 +985,6 @@ public class Logica {
         }
     }
 
-    
-    
-    //Franklin sofia
     public boolean auditarConexiones() {
         try {
             String query = "Audit connect";
@@ -1333,5 +1175,4 @@ public class Logica {
             return false;
         }
     }
-
 }

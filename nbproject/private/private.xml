@@ -3,16 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/RecuperacionRespaldos.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/Auditoria.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/logica/Logica.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/CrearRespaldo.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/Login.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/AdminDirectorios.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/Sistema.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/AdminEstadisticas.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/main/application.java</file>
-            <file>file:/C:/Users/Usuario/Downloads/DB_ADMINISTRATOR/DB_ADMINISTRATOR/src/vista/Roles.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/Parametros.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/RecuperacionRespaldos.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/CrearRespaldo.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/Opciones.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/AdminEstadisticas.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/Auditoria.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/logica/Logica.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/Tunning.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/AdminDirectorios.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/main/application.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/Roles.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/Tablespaces.java</file>
+            <file>file:/C:/Users/estudiante/OneDrive%20-%20Universidad%20Nacional%20de%20Costa%20Rica/Desktop/Database-Administrator/src/vista/Login.java</file>
         </group>
     </open-files>
 </project-private>

@@ -22,9 +22,6 @@ public class Tablespaces extends JFrame{
     public Opciones op;//se va a igualar a la ventana principal, así no se pierde la referencia de la conexión
     public Logica db;
     ResultSet resultado;
-    
-
-
 
     public Tablespaces(){
         
@@ -315,9 +312,6 @@ public class Tablespaces extends JFrame{
             }catch(Exception ex){System.out.println(ex.getMessage());}                
         }
     }
-    
-    
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearTablespace;

@@ -143,11 +143,8 @@ public class Parametros extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                   
-        //areaComando.append( String.format( "%s\n", resultado ));
-        //areaComando.setText(resultado.getString);
 
-        //db.conectar(usuario + " as sysdba", contrasena);
+       //db.conectar(usuario + " as sysdba", contrasena);
 
         String s = null;
         
@@ -184,10 +181,6 @@ public class Parametros extends javax.swing.JFrame{
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            
-        //Nombre de la base de datos    
-            
-            
         //Nombre de la base de datos    
         }else if(cbParametro.getSelectedItem().toString().equals("Nombre de la base de datos")){
             
@@ -219,11 +212,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-        //Parámetros de la base de datos  
-            
-            
+          
         //Parámetros de la base de datos  
         }else if(cbParametro.getSelectedItem().toString().equals("Parámetros de la base de datos")){
              
@@ -255,10 +244,6 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-            
-        //Productos Oracle instalados y versiones
-           
             
         //Productos Oracle instalados y versiones
         }else if(cbParametro.getSelectedItem().toString().equals("Productos Oracle instalados y versiones")){
@@ -292,10 +277,6 @@ public class Parametros extends javax.swing.JFrame{
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-        
-        //IP del servidor de la base de datos
-            
-        
         //IP del servidor de la base de datos
         }else if(cbParametro.getSelectedItem().toString().equals("IP del servidor de la base de datos")){
             
@@ -326,11 +307,7 @@ public class Parametros extends javax.swing.JFrame{
                 
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        
-        //Ubicación y nombre del fichero SPFILE
-            
+            } 
         
         //Ubicación y nombre del fichero SPFILE
         }else if(cbParametro.getSelectedItem().toString().equals("Ubicación y nombre del fichero SPFILE")){
@@ -363,11 +340,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-            
-        //Ubicación y nombre de los ficheros de control
-        
-            
+   
         //Ubicación y nombre de los ficheros de control
         }else if(cbParametro.getSelectedItem().toString().equals("Ubicación y nombre de los ficheros de control")){
         
@@ -399,11 +372,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-        //Todos los ficheros de datos y su ubicación
-            
-            
+ 
         //Todos los ficheros de datos y su ubicación
         }else if(cbParametro.getSelectedItem().toString().equals("Todos los ficheros de datos y su ubicación")){
         
@@ -435,11 +404,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-            
-        //Ficheros temporales  
-        
-            
+     
         //Ficheros temporales  
         }else if(cbParametro.getSelectedItem().toString().equals("Ficheros temporales")){
             
@@ -471,11 +436,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-        //Ficheros de RedoLog
-            
-            
+   
         //Ficheros de RedoLog
         }else if(cbParametro.getSelectedItem().toString().equals("Ficheros de Redo Log")){
             
@@ -507,13 +468,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-            
-        //Espacio de los Tablespaces    
-            
-            
-            
+    
         //Espacio de los Tablespaces    
         }else if(cbParametro.getSelectedItem().toString().equals("Espacio de los Tablespaces")){
             
@@ -545,11 +500,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        
-        //Tamaño ocupado por la base de datos    
-            
-        
+
         //Tamaño ocupado por la base de datos    
         }else if(cbParametro.getSelectedItem().toString().equals("Tamaño ocupado por la base de datos")){
             
@@ -581,11 +532,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-         
-        //Tamaño de ficheros de la base de datos    
-            
-         
+
         //Tamaño de ficheros de la base de datos    
         }else if(cbParametro.getSelectedItem().toString().equals("Tamaño de ficheros de la base de datos")){
         
@@ -617,11 +564,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        
-        //Ocupación de todos los objetos
-        
-        
+
         //Ocupación de todos los objetos
         }else if(cbParametro.getSelectedItem().toString().equals("Ocupación de todos los objetos")){
             
@@ -653,11 +596,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-        //Propietarios de objetos y número de objetos    
-            
-            
+  
         //Propietarios de objetos y número de objetos    
         }else if(cbParametro.getSelectedItem().toString().equals("Propietarios de objetos y número de objetos")){
             
@@ -689,11 +628,7 @@ public class Parametros extends javax.swing.JFrame{
             }catch(SQLException ex){
                 Logger.getLogger(Parametros.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-        //Información Tablespaces    
-            
-            
+   
         //Información Tablespaces    
         }else if(cbParametro.getSelectedItem().toString().equals("Informacion tablespaces")){
             
@@ -727,33 +662,13 @@ public class Parametros extends javax.swing.JFrame{
             }
             
         }
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    
-    
-    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         op.setVisible(true);
         this.setVisible(false);      
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
-    
-    public void ejecutar_parametro(){
-        
-
-        
-    }
-
- 
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaComando;
     private javax.swing.JComboBox<String> cbParametro;

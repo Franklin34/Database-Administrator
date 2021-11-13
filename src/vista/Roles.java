@@ -16,11 +16,8 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
-
 public class Roles extends JFrame{
-    
-        
+       
     public String usuario;
     public String contrasena;
     public Opciones op;//se va a igualar a la ventana principal, así no se pierde la referencia de la conexión
@@ -124,28 +121,6 @@ public class Roles extends JFrame{
             }
         }
     }
-  /*  public void cargarPrivilegios(){
-        
-      Logica fun = new Logica();
-      fun.conectar("system","LantanidoS13");
-      resultado=fun.cargarTotalPrivilegios();
-      
-        if(resultado!=null){
-
-            try{
-                comboUsuarios2.removeAllItems();
-                while(resultado.next()){
-                    comboUsuarios2.addItem(resultado.getString(1));
-                }
-                comboUsuarios2.setSelectedIndex(-1);
-                fun.Desconectar();
-
-            }catch(SQLException ex){
-                  Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-    */
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -364,16 +339,7 @@ public class Roles extends JFrame{
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCrearRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRolActionPerformed
-        /*if(boxDirectorios.getSelectedIndex()!=-1){
-            if(db.EliminarDirectorio((String)boxDirectorios.getSelectedItem()))
-            JOptionPane.showMessageDialog(null, "El directorio fue eliminado con exito","",JOptionPane.INFORMATION_MESSAGE);
 
-            cargarDirectorios();
-            JtxtArea.setText("");
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Debe seleccionar un directorio para borrar","", JOptionPane.ERROR_MESSAGE);
-        }*/
         if(db.crearRol(txtNombreRol.getText())){
             //db.crearRol(txtNombreRol.getText());
             JOptionPane.showMessageDialog(null, "El rol fue creado con exito","",JOptionPane.INFORMATION_MESSAGE);

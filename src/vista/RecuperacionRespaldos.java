@@ -249,13 +249,7 @@ public class RecuperacionRespaldos extends JFrame{
 
         File archivo=explorador.getSelectedFile(); //"archivo" tiene lo seleccionado
         String ruta=archivo.getName(); //"ruta" tiene la ruta del archivo seleccionado
-        //System.out.println("La ruta del fichero es: "+ruta);
         jtextRuta.setText(ruta); //La ruta se muestra en el jTextField
-        //para abrir
-        //int seleccion=explorador.showOpenDialog(parent);
-
-        //para guardar
-        //int seleccion = explorador.showSaveDialog(parent);
     }//GEN-LAST:event_btnCargarArchActionPerformed
 
     private void radioTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTablasActionPerformed
