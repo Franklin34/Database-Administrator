@@ -121,7 +121,7 @@ public class Opciones extends JFrame{
                 btnDirectoriosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDirectorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 110, 110));
+        jPanel1.add(btnDirectorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 110, 110));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setText("Creación de Respaldos");
@@ -138,7 +138,7 @@ public class Opciones extends JFrame{
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel4.setText("Administración de Archivos");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
 
         btnParametros.setBackground(java.awt.Color.darkGray);
         btnParametros.setForeground(java.awt.Color.white);
@@ -170,7 +170,7 @@ public class Opciones extends JFrame{
 
         jLabel6.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel6.setText("Auditoría");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 60, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 60, -1));
 
         btnRoles.setBackground(java.awt.Color.darkGray);
         btnRoles.setForeground(java.awt.Color.white);
@@ -198,7 +198,7 @@ public class Opciones extends JFrame{
                 btnAuditoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAuditoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 110, 110));
+        jPanel1.add(btnAuditoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 110, 110));
 
         jLabel8.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel8.setText("Roles");
@@ -221,10 +221,10 @@ public class Opciones extends JFrame{
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 80, 20));
 
         jSeparator1.setBackground(java.awt.Color.black);
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 630, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 490, 10));
 
         jSeparator2.setBackground(java.awt.Color.black);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 630, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 490, 10));
 
         jMenuBar1.setBackground(java.awt.Color.darkGray);
         jMenuBar1.setForeground(java.awt.Color.white);
@@ -247,7 +247,7 @@ public class Opciones extends JFrame{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
