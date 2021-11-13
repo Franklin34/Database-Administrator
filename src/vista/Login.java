@@ -38,13 +38,14 @@ public class Login extends javax.swing.JFrame{
     //CARGA LOS USUARIOS EN LA INTERFAZ
     public void cargarUsuarios(){
         
+
       fun.conectar("sys","root123");
+
       resultado = fun.usuarios();
       
         if(resultado!=null){
           
           try{
-              
             esquemas_combo_box.removeAllItems();
             while(resultado.next()){
                 esquemas_combo_box.addItem(resultado.getString(1));

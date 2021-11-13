@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,9 +29,12 @@ public class Logica {
     public boolean conectar(String user, String pass) {
 
         try {
-            user = user + " as sysdba";
+           if(user == "sys"){
+               user = user + " as sysdba";
+           }
             Class.forName("oracle.jdbc.OracleDriver");
             String BaseDeDatos = "jdbc:oracle:thin:@LAPTOP-TUAVVKTS:1521/XE";
+
             //String BaseDeDatos = "jdbc:oracle:thin:@192.168.43.209:1521:XE";
             //String sysdba = "sysdba";
             conexion = DriverManager.getConnection(BaseDeDatos, user, pass);
@@ -304,7 +308,7 @@ public class Logica {
             return null;
         }
     }
-    
+
     //Crea directorio JORGE
     public boolean crearDirectorio(String nombreDir, String pathDir, String user) {
 
@@ -458,24 +462,6 @@ public class Logica {
         }
     }
 
-    public boolean crearIndice(String tabla, String col, String nomIndice) {
-
-        String query = "CREATE INDEX " + nomIndice + " ON " + tabla + "(" + col + ")";
-
-        try {
-
-            Statement stmt = conexion.createStatement();
-            stmt.execute(query);
-            stmt.close();
-            conexion.commit();
-            return true;
-
-        } catch (SQLException ex) {
-            cadenaError = ex.getMessage();
-            return false;
-        }
-    }
-
     public boolean eliminarIndice(String nomIndice) {
 
         String query = "DROP INDEX " + nomIndice;
@@ -588,7 +574,7 @@ public class Logica {
     public boolean createTable(String nombTable, String cadena) {
 
         cadenaError = null;
-
+                
         cadena = "CREATE TABLE " + nombTable + "(" + cadena + ")";
 
         try {
@@ -608,25 +594,25 @@ public class Logica {
 
         this.conectar("sys", "root123");
         String query;
-//            if(tabla.equals("Schema"))
-//            {
-//                query="EXEC dbms_stats.gather_schema_stats('"+usuario+"',cascade => true);";
-//            }
-//            else
-//            {
-//                query="ANALYZE TABLE "+usuario+"."+tabla+" COMPUTE STATISTICS";
-//            }
-//            try
-//            {
-//                Statement stmt=null;
-//                stmt=conexion.createStatement();
-//                stmt.executeQuery(query);
-//                JOptionPane.showMessageDialog(null, "¡La Estadistica se realizo exitosamente!");
-//            }
-//            catch(SQLException ex)
-//            {
-//                Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+// if(tabla.equals("Schema"))
+// {
+// query="EXEC dbms_stats.gather_schema_stats('"+usuario+"',cascade => true);";
+// }
+// else
+// {
+// query="ANALYZE TABLE "+usuario+"."+tabla+" COMPUTE STATISTICS";
+// }
+// try
+// {
+// Statement stmt=null;
+// stmt=conexion.createStatement();
+// stmt.executeQuery(query);
+// JOptionPane.showMessageDialog(null, "¡La Estadistica se realizo exitosamente!");
+// }
+// catch(SQLException ex)
+// {
+// Logger.getLogger(InicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+// }
         if (tabla.equals("Schema")) {
 
             ResultSet resultado = this.cargarTablasUsuario(usuario);
@@ -663,8 +649,8 @@ public class Logica {
             }
         }
     }
-
     //Estadisticas EDWIN
+
     public ResultSet ConsultaStats(String usuario, String tabla) {
 
         this.conectar("sys", "root123");
@@ -1060,7 +1046,7 @@ public class Logica {
         try {
             String query1 = "alter session set \"_ORACLE_SCRIPT\" =true";
             String query = "CREATE ROLE " + rol;
-            
+
             Statement stmt = conexion.createStatement();
 
             stmt.execute(query1);
@@ -1076,13 +1062,13 @@ public class Logica {
         }
 
     }
-    
+
     //Crea usuario KATHERINE
-    public boolean crearUsuario(String usuario){
+    public boolean crearUsuario(String usuario) {
         try {
             String query1 = "alter session set \"_ORACLE_SCRIPT\" =true";
             String query = "CREATE USER " + usuario;
-            
+
             Statement stmt = conexion.createStatement();
 
             stmt.execute(query1);
@@ -1113,7 +1099,6 @@ public class Logica {
             System.out.println(ex.toString());
             return null;
         }
-
     }
 
     //Revoca rol a un usuario KATHERINE
@@ -1122,8 +1107,8 @@ public class Logica {
         try {
             String query = "REVOKE " + rol + " FROM " + user;
             Statement stmt = conexion.createStatement();
-            
-            stmt.execute(query);            
+
+            stmt.execute(query);
             stmt.close();
             conexion.setAutoCommit(false);
             conexion.commit();
@@ -1151,6 +1136,200 @@ public class Logica {
 
         } catch (SQLException ex) {
             Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    
+    
+    //Franklin sofia
+    public boolean auditarConexiones() {
+        try {
+            String query = "Audit connect";
+            Statement stmt = conexion.createStatement();
+
+            stmt.execute(query);
+            stmt.close();
+            conexion.setAutoCommit(false);
+            conexion.commit();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean auditarIniciosSesion() {
+        try {
+            String query = "audit session";
+            Statement stmt = conexion.createStatement();
+
+            stmt.execute(query);
+            stmt.close();
+            conexion.setAutoCommit(false);
+            conexion.commit();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean auditarIniciosSesionExitosos() {
+        try {
+            String query = "audit session whenever successful";
+            Statement stmt = conexion.createStatement();
+
+            stmt.execute(query);
+            stmt.close();
+            conexion.setAutoCommit(false);
+            conexion.commit();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean auditarIniciosSesionNoExitosos() {
+        try {
+            String query = "audit session whenever not successful";
+            Statement stmt = conexion.createStatement();
+
+            stmt.execute(query);
+            stmt.close();
+            conexion.setAutoCommit(false);
+            conexion.commit();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean auditarDeAccion() {
+        try {
+            String query = "audit role";
+            Statement stmt = conexion.createStatement();
+
+            stmt.execute(query);
+            stmt.close();
+            conexion.setAutoCommit(false);
+            conexion.commit();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean auditarTabla(String schema, String tabla) {
+        try {
+            String query = "Audit insert, update, delete,select on " + schema + "." + tabla + " by access";
+            Statement stmt = conexion.createStatement();
+
+            stmt.execute(query);
+            stmt.close();
+            conexion.setAutoCommit(false);
+            conexion.commit();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Logica.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public ResultSet verAuditoriaPorAccion() {
+
+        String query = "SELECT sessionid,userhost,username,action_name, obj_name, action FROM sys.dba_audit_trail WHERE (action_name = 'INSERT') or (action_name = 'UPDATE') "
+                + "or (action_name = 'DELETE') or ( action_name = 'SELECT' )";
+
+        try {
+            Statement stmt = null;
+            stmt = conexion.createStatement();
+            ResultSet resultado = stmt.executeQuery(query);
+            return resultado;
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+        }
+    }
+
+    public ResultSet visualizarAuditoriaSesiones() {
+
+        String query = "select Username, DECODE (Returncode, '0', 'Conectado',"
+                + "'1005', 'Fallo - Null', 1017, 'Fallo', Returncode) Tipo_Suceso,"
+                + "TO_CHAR(Timestamp, 'DD-MM-YY HH24:MI:SS')"
+                + "Hora_Inicio_Sesion, TO_CHAR(Logoff_Time, 'DD-MM-YY"
+                + "HH24:MI:SS') Hora_Fin_Sesion from DBA_AUDIT_SESSION";
+
+        try {
+            Statement stmt = null;
+            stmt = conexion.createStatement();
+            ResultSet resultado = stmt.executeQuery(query);
+            return resultado;
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+        }
+    }
+
+    public ResultSet verTablasXSchema(String schema) {
+
+        String query = "SELECT table_name FROM all_tables WHERE owner = '" + schema + "' ORDER BY table_name";
+
+        try {
+            Statement stmt = null;
+            stmt = conexion.createStatement();
+            ResultSet resultado = stmt.executeQuery(query);
+
+            return resultado;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public ResultSet verCamposXTabla(String tabla) {
+
+        String query = "SELECT column_name FROM all_tab_columns WHERE table_name = '" + tabla + "'";
+
+        try {
+            Statement stmt = null;
+            stmt = conexion.createStatement();
+            ResultSet resultado = stmt.executeQuery(query);
+
+            return resultado;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public boolean crearIndice(String schema, String tabla, String col, String nomIndice) {
+
+        String query = "CREATE INDEX " + nomIndice + " ON " + schema + "." + tabla + "(" + col + ")";
+
+        try {
+            Statement stmt = conexion.createStatement();
+            stmt.execute(query);
+            stmt.close();
+            conexion.setAutoCommit(false);
+            conexion.commit();
+            return true;
+
+        } catch (SQLException ex) {
+            cadenaError = ex.getMessage();
             return false;
         }
     }

@@ -16,10 +16,12 @@ public class Tunning extends JFrame{
     public Opciones op;//se va a igualar a la ventana principal, así no se pierde la referencia de la conexión
     public String usuario;
     public String contrasena;
-    public Logica db;
+    public Logica db = new Logica();
     List<String> listDirectorios = new ArrayList<String>();
     ResultSet resultado;
-    
+    ResultSet resultado2;
+    ResultSet resultado3;
+    ResultSet resultado4;
     
     public Tunning(){
         
@@ -39,6 +41,8 @@ public class Tunning extends JFrame{
         this.setLocationRelativeTo(null); //Centa la pantalla
         this.setTitle("Planes de Ejecución"); //Título
         setResizable(false);
+        cargarUsuarios();
+        cargarTablas();
     }
 
 
@@ -58,6 +62,18 @@ public class Tunning extends JFrame{
         btnEliminarPlanes = new javax.swing.JButton();
         btnverPlan1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btnCrearPlan1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -74,7 +90,7 @@ public class Tunning extends JFrame{
                 btnCrearPlanActionPerformed(evt);
             }
         });
-        panel.add(btnCrearPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 180, 30));
+        panel.add(btnCrearPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 180, 30));
 
         tablaPlanes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,7 +110,7 @@ public class Tunning extends JFrame{
         });
         jScrollPane1.setViewportView(tablaPlanes);
 
-        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 610, 230));
+        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 630, 230));
 
         btnRegresar.setBackground(java.awt.Color.darkGray);
         btnRegresar.setForeground(java.awt.Color.white);
@@ -108,12 +124,12 @@ public class Tunning extends JFrame{
         panel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel2.setText("Explain Plan");
-        panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 30));
+        jLabel2.setText("Crear Indices");
+        panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, -1, 30));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setText("Ingrese una consulta SQL a optimizar");
-        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 330, 30));
+        jLabel3.setText("Nombre : ");
+        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, 80, 30));
 
         txtSql.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtSql.setBorder(null);
@@ -146,16 +162,90 @@ public class Tunning extends JFrame{
         jSeparator1.setBackground(java.awt.Color.black);
         panel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 640, 20));
 
+        btnCrearPlan1.setBackground(new java.awt.Color(153, 255, 153));
+        btnCrearPlan1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        btnCrearPlan1.setText("Crear Indice");
+        btnCrearPlan1.setBorder(null);
+        btnCrearPlan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearPlan1ActionPerformed(evt);
+            }
+        });
+        panel.add(btnCrearPlan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 180, 30));
+
+        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel4.setText("Ingrese una consulta SQL a optimizar");
+        panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 330, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, 140, -1));
+
+        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel5.setText("Tabla: ");
+        panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 70, 30));
+
+        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel6.setText("Schema: ");
+        panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, 70, 30));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        panel.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, 140, -1));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+        panel.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 150, 140, -1));
+
+        jLabel7.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel7.setText("Explain Plan");
+        panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, 30));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        panel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 270, 140, -1));
+
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel8.setText("Campo: ");
+        panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 70, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre del Indice", "Nombre de la columna"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        panel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 320, 140));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -189,27 +279,90 @@ public class Tunning extends JFrame{
         this.llenarGrid();
     }//GEN-LAST:event_btnverPlan1btnVerPlanesActionPerformed
 
+    private void btnCrearPlan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlan1ActionPerformed
+        if (db.crearIndice(String.valueOf(jComboBox3.getSelectedItem()), String.valueOf(jComboBox2.getSelectedItem()), String.valueOf(jComboBox1.getSelectedItem()), 
+                jTextField1.getText())) {
+            JOptionPane.showMessageDialog(null, "Se ha creado un indice para el campo " + String.valueOf(jComboBox1.getSelectedItem()) +
+                    " de la tabla " + String.valueOf(jComboBox2.getSelectedItem()) + " en el schema " + String.valueOf(jComboBox3.getSelectedItem()), "", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se logro crear un indice para el campo " + String.valueOf(jComboBox1.getSelectedItem()) +
+                    " de la tabla " + String.valueOf(jComboBox2.getSelectedItem()) + " en el schema " + String.valueOf(jComboBox3.getSelectedItem()), "", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        llenarGrid2();
+    }//GEN-LAST:event_btnCrearPlan1ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        cargarTablas();
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        cargarCampos();
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     //////////////////////////////////////////////////  METODOS  ////////////////////////////////////////////////////////
     
 
-    //metodo de cargar directorios
-    /*public void cargarTablasUsuario(){
-        
-        ResultSet resultado = db.cargarTablasUsuario(usuario);
+    public void cargarUsuarios() {
+        db.conectar("sys", "root123");
+        resultado = db.usuarios();
 
-        cbTablas.removeAllItems();
-        
-        try{
-            while(resultado.next()){
-                cbTablas.addItem(resultado.getString("TABLE_NAME"));
+        if (resultado != null) {
 
+            try {
+                jComboBox3.removeAllItems();
+                while (resultado.next()) {
+                    jComboBox3.addItem(resultado.getString(1));
+                }
+                jComboBox3.setSelectedIndex(-1);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-            cbTablas.setSelectedIndex(-1);
-
-        }catch(SQLException ex){
-            Logger.getLogger(Tunning.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
+    
+    public void cargarTablas() {
+        db.conectar("sys", "root123");
+        resultado2 = db.verTablasXSchema(String.valueOf(jComboBox3.getSelectedItem()));
+
+        if (resultado2 != null) {
+
+            try {
+                jComboBox2.removeAllItems();
+                while (resultado2.next()) {
+                    jComboBox2.addItem(resultado2.getString(1));
+                }
+                jComboBox2.setSelectedIndex(-1);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void cargarCampos() {
+        db.conectar("sys", "root123");
+        resultado3 = db.verCamposXTabla(String.valueOf(jComboBox2.getSelectedItem()));
+
+        if (resultado3 != null) {
+
+            try {
+                jComboBox1.removeAllItems();
+                while (resultado3.next()) {
+                    jComboBox1.addItem(resultado3.getString(1));
+                }
+                jComboBox1.setSelectedIndex(-1);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
      
     
     public void CrearPlan(){   
@@ -260,17 +413,57 @@ public class Tunning extends JFrame{
         }
     }
     
+    public void llenarGrid2() {
+
+        ResultSet resultado;
+        DefaultTableModel modelo = (DefaultTableModel) this.jTable1.getModel();
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i -= 1;
+        }
+
+        resultado = db.cargarIndicesTabla(String.valueOf(jComboBox2.getSelectedItem()));
+
+        this.jTable1.removeAll();
+
+        try {
+            while (resultado.next()) {
+                Object[] fila = new Object[2];
+                fila[0] = resultado.getString("INDEX_NAME");
+                fila[1] = resultado.getString("COLUMN_NAME");
+                modelo.addRow(fila);
+            }
+            jTable1.setModel(modelo);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminEstadisticas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearPlan;
+    private javax.swing.JButton btnCrearPlan1;
     private javax.swing.JButton btnEliminarPlanes;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnverPlan1;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panel;
     private javax.swing.JTable tablaPlanes;
     private javax.swing.JTextField txtSql;
