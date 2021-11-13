@@ -38,7 +38,7 @@ public class Login extends javax.swing.JFrame{
     //CARGA LOS USUARIOS EN LA INTERFAZ
     public void cargarUsuarios(){
         
-      fun.conectar("system","root");
+      fun.conectar("sys","root123");
       resultado = fun.usuarios();
       
         if(resultado!=null){
